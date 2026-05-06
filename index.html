@@ -9,6 +9,7 @@
   <h1>☕ AI Coffee Assistant</h1>
 
   <div class="form">
+
     <label>Roast</label>
     <select id="roast">
       <option value="light">Light</option>
@@ -22,20 +23,10 @@
       <option value="natural">Natural</option>
       <option value="honey">Honey</option>
     </select>
-    
-    <label>origin</label>
-    <select id="origin">
-      <script>
-      const originSelect = document.getElementById("origin");
-      origins.forEach(o => {
-        let opt = document.createElement("option");
-        opt.value = o;
-        opt.text = o;
-        originSelect.appendChild(opt);
-      });
-      </script>
-    </select>
-    
+
+    <label>Origin</label>
+    <select id="origin"></select>
+
     <label>Flavor Style</label>
     <select id="flavor">
       <option value="floral">Floral</option>
@@ -59,13 +50,27 @@
       <option value="Flat">Flat Bottom</option>
       <option value="Cone">Cone</option>
     </select>
+
     <button onclick="calculate()">Calculate</button>
+
   </div>
-  <script>
-  
 
   <div id="result"></div>
 
+  <!-- โหลด app.js ก่อน -->
   <script src="app.js"></script>
+
+  <!-- สร้าง origin dropdown หลังโหลด JS -->
+  <script>
+    const originSelect = document.getElementById("origin");
+
+    origins.forEach(o => {
+      let opt = document.createElement("option");
+      opt.value = o;
+      opt.textContent = o;
+      originSelect.appendChild(opt);
+    });
+  </script>
+
 </body>
 </html>
