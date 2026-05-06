@@ -1,76 +1,165 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Coffee AI Calculator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffee AI — Pour Over Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <h1>☕ AI Coffee Assistant</h1>
 
-  <div class="form">
+  <div class="bg-texture"></div>
 
-    <label>Roast</label>
-    <select id="roast">
-      <option value="light">Light</option>
-      <option value="medium">Medium</option>
-      <option value="dark">Dark</option>
-    </select>
+  <header>
+    <div class="logo">
+      <span class="logo-icon">☕</span>
+      <div>
+        <div class="logo-title">BREW.AI</div>
+        <div class="logo-sub">Pour Over Intelligence</div>
+      </div>
+    </div>
+  </header>
 
-    <label>Process</label>
-    <select id="process">
-      <option value="washed">Washed</option>
-      <option value="natural">Natural</option>
-      <option value="honey">Honey</option>
-    </select>
+  <main>
+    <section class="hero">
+      <h1>Your Perfect<br><em>Cup, Calculated.</em></h1>
+      <p class="hero-sub">Input your beans. Get a precision recipe. Teach the AI what tastes right.</p>
+    </section>
 
-    <label>Origin</label>
-    <select id="origin"></select>
+    <div class="card form-card">
+      <div class="card-label">Bean Profile</div>
 
-    <label>Flavor Style</label>
-    <select id="flavor">
-      <option value="floral">Floral</option>
-      <option value="balanced">Balanced</option>
-      <option value="chocolate">Chocolate</option>
-    </select>
+      <div class="grid-2">
+        <div class="field">
+          <label>Roast Level</label>
+          <div class="select-wrap">
+            <select id="roast">
+              <option value="light">☀️ Light</option>
+              <option value="medium" selected>🌤 Medium</option>
+              <option value="dark">🌑 Dark</option>
+            </select>
+          </div>
+        </div>
 
-    <label>Your Preference</label>
-    <select id="style">
-      <option value="fruity">Fruity</option>
-      <option value="balanced">Balanced</option>
-      <option value="body">Body</option>
-    </select>
+        <div class="field">
+          <label>Process</label>
+          <div class="select-wrap">
+            <select id="process">
+              <option value="washed">💧 Washed</option>
+              <option value="natural">🍒 Natural</option>
+              <option value="honey">🍯 Honey</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
-    <label>Dripper</label>
-    <select id="dripper">
-      <option value="V60">V60</option>
-      <option value="Kalita">Kalita</option>
-      <option value="Origami">Origami</option>
-      <option value="Melitta">Melitta</option>
-      <option value="Flat">Flat Bottom</option>
-      <option value="Cone">Cone</option>
-    </select>
+      <div class="field">
+        <label>Origin</label>
+        <div class="select-wrap">
+          <select id="origin"></select>
+        </div>
+      </div>
 
-    <button onclick="calculate()">Calculate</button>
+      <div class="card-label" style="margin-top: 28px;">Preferences</div>
 
-  </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Flavor Notes</label>
+          <div class="select-wrap">
+            <select id="flavor">
+              <option value="floral">🌸 Floral</option>
+              <option value="balanced">⚖️ Balanced</option>
+              <option value="chocolate">🍫 Chocolate</option>
+            </select>
+          </div>
+        </div>
 
-  <div id="result"></div>
+        <div class="field">
+          <label>Your Style</label>
+          <div class="select-wrap">
+            <select id="style">
+              <option value="fruity">🍓 Fruity</option>
+              <option value="balanced">⚖️ Balanced</option>
+              <option value="body">💪 Body</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
-  <!-- โหลด app.js ก่อน -->
+      <div class="field">
+        <label>Dripper</label>
+        <div class="dripper-grid" id="dripper-grid">
+          <button class="dripper-btn active" data-value="V60">V60</button>
+          <button class="dripper-btn" data-value="Kalita">Kalita</button>
+          <button class="dripper-btn" data-value="Origami">Origami</button>
+          <button class="dripper-btn" data-value="Melitta">Melitta</button>
+          <button class="dripper-btn" data-value="Flat">Flat Bottom</button>
+          <button class="dripper-btn" data-value="Cone">Cone</button>
+        </div>
+        <input type="hidden" id="dripper" value="V60">
+      </div>
+
+      <button class="btn-calc" onclick="calculate()">
+        <span>Generate Recipe</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </div>
+
+    <!-- RESULT -->
+    <div class="card result-card" id="result-card" style="display:none;">
+      <div class="card-label">AI Recipe</div>
+      <div id="result"></div>
+
+      <!-- Adjusted recipe section -->
+      <div id="adjusted-recipe" style="display:none;">
+        <div class="divider"></div>
+        <div class="card-label adjusted-label">🔁 Adjusted Recipe</div>
+        <div id="adjusted-content"></div>
+      </div>
+    </div>
+
+    <!-- FEEDBACK -->
+    <div class="card feedback-card" id="feedback-box" style="display:none;">
+      <div class="card-label">Your Feedback</div>
+      <p class="feedback-intro">How did it taste? Help the AI learn.</p>
+
+      <div class="taste-grid" id="taste-grid">
+        <button class="taste-btn" data-value="good">✅ Perfect</button>
+        <button class="taste-btn" data-value="sour">🍋 Too Sour</button>
+        <button class="taste-btn" data-value="bitter">😬 Too Bitter</button>
+        <button class="taste-btn" data-value="weak">💧 Too Weak</button>
+        <button class="taste-btn" data-value="astringent">😮‍💨 Astringent</button>
+        <button class="taste-btn" data-value="defect">⚠️ Defect</button>
+        <button class="taste-btn" data-value="other">✍️ Other</button>
+      </div>
+      <input type="hidden" id="taste" value="">
+
+      <div class="field" id="other-field" style="display:none; margin-top:16px;">
+        <label>Describe the taste</label>
+        <input type="text" id="otherText" placeholder="e.g. papery, musty, flat...">
+      </div>
+
+      <label class="consent-label">
+        <input type="checkbox" id="consent">
+        <span>Allow this data to improve the AI model</span>
+      </label>
+
+      <button class="btn-feedback" onclick="submitFeedback()">Submit Feedback</button>
+
+      <div id="feedback-success" style="display:none;" class="feedback-success">
+        ✓ Feedback saved — recipe updated above
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <span>BREW.AI</span> — Pour Over Intelligence · Built with ☕ &amp; JS
+  </footer>
+
   <script src="app.js"></script>
-
-  <!-- สร้าง origin dropdown หลังโหลด JS -->
-  <script>
-    const originSelect = document.getElementById("origin");
-
-    origins.forEach(o => {
-      let opt = document.createElement("option");
-      opt.value = o;
-      opt.textContent = o;
-      originSelect.appendChild(opt);
-    });
-  </script>
-
 </body>
 </html>
