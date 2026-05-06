@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Coffee AI Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>☕ AI Coffee Assistant</h1>
+
+  <div class="form">
+    <label>Roast</label>
+    <select id="roast">
+      <option value="light">Light</option>
+      <option value="medium">Medium</option>
+      <option value="dark">Dark</option>
+    </select>
+
+    <label>Process</label>
+    <select id="process">
+      <option value="washed">Washed</option>
+      <option value="natural">Natural</option>
+      <option value="honey">Honey</option>
+    </select>
+
+    <label>Origin</label>
+    <select id="origin">
+      <option value="Ethiopia">Ethiopia</option>
+      <option value="Guatemala">Guatemala</option>
+      <option value="Brazil">Brazil</option>
+    </select>
+
+    <label>Flavor Style</label>
+    <select id="flavor">
+      <option value="floral">Floral</option>
+      <option value="balanced">Balanced</option>
+      <option value="chocolate">Chocolate</option>
+    </select>
+
+    <label>Your Preference</label>
+    <select id="style">
+      <option value="fruity">Fruity</option>
+      <option value="balanced">Balanced</option>
+      <option value="body">Body</option>
+    </select>
+
+    <label>Cup Size (ml)</label>
+    <input type="number" id="cup" value="240">
+
+    <label>Water Flow</label>
+    <select id="flow">
+      <option value="FAST">Fast</option>
+      <option value="MEDIUM">Medium</option>
+      <option value="SLOW">Slow</option>
+    </select>
+
+    <button onclick="calculate()">Calculate</button>
+  </div>
+
+  <div id="result"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
