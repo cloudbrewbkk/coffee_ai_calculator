@@ -22,17 +22,20 @@
       <option value="natural">Natural</option>
       <option value="honey">Honey</option>
     </select>
-
-    <script>
-    const originSelect = document.getElementById("origin");
-    origins.forEach(o => {
-      let opt = document.createElement("option");
-      opt.value = o;
-      opt.text = o;
-      originSelect.appendChild(opt);
-    });
-    </script>
-
+    
+    <label>origin</label>
+    <select id="origin">
+      <script>
+      const originSelect = document.getElementById("origin");
+      origins.forEach(o => {
+        let opt = document.createElement("option");
+        opt.value = o;
+        opt.text = o;
+        originSelect.appendChild(opt);
+      });
+      </script>
+    </select>
+    
     <label>Flavor Style</label>
     <select id="flavor">
       <option value="floral">Floral</option>
