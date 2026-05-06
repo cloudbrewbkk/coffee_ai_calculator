@@ -23,12 +23,15 @@
       <option value="honey">Honey</option>
     </select>
 
-    <label>Origin</label>
-    <select id="origin">
-      <option value="Ethiopia">Ethiopia</option>
-      <option value="Guatemala">Guatemala</option>
-      <option value="Brazil">Brazil</option>
-    </select>
+    <script>
+    const originSelect = document.getElementById("origin");
+    origins.forEach(o => {
+      let opt = document.createElement("option");
+      opt.value = o;
+      opt.text = o;
+      originSelect.appendChild(opt);
+    });
+    </script>
 
     <label>Flavor Style</label>
     <select id="flavor">
@@ -44,18 +47,19 @@
       <option value="body">Body</option>
     </select>
 
-    <label>Cup Size (ml)</label>
-    <input type="number" id="cup" value="240">
-
-    <label>Water Flow</label>
-    <select id="flow">
-      <option value="FAST">Fast</option>
-      <option value="MEDIUM">Medium</option>
-      <option value="SLOW">Slow</option>
+    <label>Dripper</label>
+    <select id="dripper">
+      <option value="V60">V60</option>
+      <option value="Kalita">Kalita</option>
+      <option value="Origami">Origami</option>
+      <option value="Melitta">Melitta</option>
+      <option value="Flat">Flat Bottom</option>
+      <option value="Cone">Cone</option>
     </select>
-
     <button onclick="calculate()">Calculate</button>
   </div>
+  <script>
+  
 
   <div id="result"></div>
 
